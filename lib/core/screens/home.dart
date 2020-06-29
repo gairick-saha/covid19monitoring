@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 import 'package:covid19tracker/core/models/dataClass.dart';
 import 'package:covid19tracker/core/providers/dataProvider.dart';
 import 'package:covid19tracker/core/widgets/banner.dart';
@@ -19,19 +19,27 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final updateTime = 0;
+  List timeSeriesData;
+  List stateData;
+  List testData;
+  final String url = 'https://api.covid19india.org/data.json';
 
-  DataClass data = DataClass();
+  Future getData() async {
+    final response = await http.get(url);
+    Map<String, dynamic> map = json.decode(response.body);
+    timeSeriesData = map['cases_time_series'];
+    stateData = map['statewise'];
+    testData = map['tested'];
+    print(timeSeriesData.length);
+    print(stateData.length);
+    print(testData.length);
+    return ({timeSeriesData, stateData, testData});
+  }
 
   @override
   void initState() {
     super.initState();
-    HitApi.getData().then(
-      (value) {
-        data = value;
-        print(value.statewise);
-      },
-    );
-    // Provider.of<DataProvider>(context).setData(data);
+    getData();
   }
 
   @override

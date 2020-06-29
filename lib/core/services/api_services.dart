@@ -8,12 +8,12 @@ class HitApi {
   static Future<DataClass> getData() async {
     try {
       final response = await http.get(url);
-      // print(json.decode(response.body));
-      final Map parsed = json.decode(response.body);
+      final result = json.decode(response.body);
+      // final Map parsed = json.decode(response.body);
       // DataClass dataClass = DataClass.fromJson(parsed);
-      print(parsed);
+      // DataModelClass dataModelClass = dataModelClassFromJson(response.body);
 
-      // return dataClass;
+      return result;
     } catch (e) {
       return DataClass();
     }
