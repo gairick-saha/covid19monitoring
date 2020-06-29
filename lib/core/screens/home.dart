@@ -30,9 +30,9 @@ class _HomePageState extends State<HomePage> {
     timeSeriesData = map['cases_time_series'];
     stateData = map['statewise'];
     testData = map['tested'];
-    print(timeSeriesData.length);
-    print(stateData.length);
-    print(testData.length);
+    print(timeSeriesData.last);
+    // print(stateData.length);
+    // print(testData.length);
     return ({timeSeriesData, stateData, testData});
   }
 
