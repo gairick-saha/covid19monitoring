@@ -1,3 +1,4 @@
+import 'package:covid19tracker/core/providers/dataProvider.dart';
 import 'package:covid19tracker/core/providers/themeProvider.dart';
 import 'package:covid19tracker/core/screens/home.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => ThemeBloc(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => DataProvider(),
+        ),
       ],
       child: Covid19App(),
     );
@@ -24,7 +28,6 @@ class MyApp extends StatelessWidget {
 class Covid19App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     final _theme = Provider.of<ThemeBloc>(context);
 
     return MaterialApp(
@@ -35,4 +38,3 @@ class Covid19App extends StatelessWidget {
     );
   }
 }
-

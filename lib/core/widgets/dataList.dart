@@ -1,4 +1,6 @@
+import 'package:covid19tracker/core/providers/dataProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DataList extends StatelessWidget {
   DataList({Key key}) : super(key: key);
@@ -6,8 +8,8 @@ class DataList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
+    // final height = MediaQuery.of(context).size.height;
+    final listData = Provider.of<DataProvider>(context).getData();
     return Expanded(
       child: Container(
         child: ListView.builder(
@@ -15,7 +17,7 @@ class DataList extends StatelessWidget {
           physics: ScrollPhysics(),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          itemCount: 5,
+          itemCount: 1,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0),
