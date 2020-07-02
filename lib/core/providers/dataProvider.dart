@@ -1,40 +1,38 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:covid19tracker/core/models/dataClass.dart';
+import 'package:covid19tracker/core/models/dataListClass.dart';
 import 'package:flutter/foundation.dart';
 
 class DataProvider extends ChangeNotifier {
   final String url = 'https://api.covid19india.org/data.json';
   bool isLoading = true;
-  DataClass _dataClass = new DataClass();
-  List<CasesTimeSeries> casesTimeSeries = new List();
-  List<Statewise> statewise = new List();
-  List<Tested> tested = new List();
+  DataListClass _dataListClass = DataListClass();
+  List<TimeSeries> _timeSeries = List();
+  List<Statewise> _statewise = List();
+  List<Tested> _tested = List();
 
   DataProvider() {
-    _dataClass.casesTimeSeries = casesTimeSeries;
-    _dataClass.statewise = statewise;
-    _dataClass.tested = tested;
+    _dataListClass.casesTimeSeries = _timeSeries;
+    _dataListClass.statewise = _statewise;
+    _dataListClass.tested = _tested;
   }
 
-  setData(DataClass value) {
-    _dataClass = value;
+  setData(DataListClass values) {
+    _dataListClass = values;
     isLoading = false;
     notifyListeners();
   }
 
-  DataClass getData() {
-    return _dataClass;
+  DataListClass getData() {
+    return _dataListClass;
   }
 
-  Future hitApi() async {
-    try {
-      final response = await http.get(url);
-      final Map parsed = json.decode(response.body);
-      DataClass dataClass = DataClass.fromJson(parsed);
-      return dataClass;
-    } catch (e) {
-      return _dataClass;
-    }
-  }
+  // Future hitApi() async {
+  //   try {
+  //     final response = await http.get(url);
+  //     final Map parsed = json.decode(response.body);
+  //     DataClass dataClass = DataClass.fromJson(parsed);
+  //     return dataClass;
+  //   } catch (e) {
+  //     return _dataClass;
+  //   }
+  // }
 }

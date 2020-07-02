@@ -1,14 +1,15 @@
+import 'package:covid19tracker/core/providers/dataProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UpperSection extends StatelessWidget {
-  const UpperSection({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-
+    final _stateWiseList =
+        Provider.of<DataProvider>(context).getData().statewise;
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +31,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              "0",
+              _stateWiseList.first.confirmed,
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
           ],
@@ -56,7 +57,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              "0",
+              _stateWiseList.first.active,
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
             ),
           ],
@@ -80,7 +81,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              "0",
+              _stateWiseList.first.recovered,
               style:
                   TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
             ),
@@ -105,7 +106,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              "0",
+              _stateWiseList.first.deaths,
               style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
             ),
           ],

@@ -1,21 +1,23 @@
-import 'dart:convert';
-import 'package:covid19tracker/core/models/dataClass.dart';
+import 'package:covid19tracker/core/models/dataListClass.dart';
 import 'package:http/http.dart' as http;
 
 class HitApi {
-  static String url = 'https://api.covid19india.org/data.json';
+  final String url = 'https://api.covid19india.org/data.json';
 
-  static Future<DataClass> getData() async {
-    try {
-      final response = await http.get(url);
-      final result = json.decode(response.body);
-      // final Map parsed = json.decode(response.body);
-      // DataClass dataClass = DataClass.fromJson(parsed);
-      // DataModelClass dataModelClass = dataModelClassFromJson(response.body);
-
-      return result;
-    } catch (e) {
-      return DataClass();
-    }
+  Future getData() async {
+    final response = await http.get(url);
+    DataListClass dataListClass = dataListClassFromJson(response.body);
+    return dataListClass;
   }
 }
+
+// Map<String, dynamic> map = json.decode(response.body);
+//   timeSeriesData = map['cases_time_series'];
+//   stateData = map['statewise'];
+//   testData = map['tested'];
+//   print(timeSeriesData.last);
+//   print(timeSeriesData.last['date']);
+//   print(timeSeriesData.last['totalconfirmed']);
+//   print(timeSeriesData.last['totalrecovered']);
+//   print(timeSeriesData.last['totaldeceased']);
+//   return ({timeSeriesData, stateData, testData});
