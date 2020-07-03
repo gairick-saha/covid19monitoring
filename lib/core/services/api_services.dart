@@ -10,14 +10,3 @@ class HitApi {
     return dataListClass;
   }
 }
-
-// Map<String, dynamic> map = json.decode(response.body);
-//   timeSeriesData = map['cases_time_series'];
-//   stateData = map['statewise'];
-//   testData = map['tested'];
-//   print(timeSeriesData.last);
-//   print(timeSeriesData.last['date']);
-//   print(timeSeriesData.last['totalconfirmed']);
-//   print(timeSeriesData.last['totalrecovered']);
-//   print(timeSeriesData.last['totaldeceased']);
-//   return ({timeSeriesData, stateData, testData});

@@ -31,7 +31,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              _stateWiseList.first.confirmed,
+              _stateWiseList.length > 0 ? _stateWiseList.first.confirmed : '0',
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
           ],
@@ -57,7 +57,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              _stateWiseList.first.active,
+              _stateWiseList.length > 0 ? _stateWiseList.first.active : '0',
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
             ),
           ],
@@ -81,7 +81,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              _stateWiseList.first.recovered,
+              _stateWiseList.length > 0 ? _stateWiseList.first.recovered : '0',
               style:
                   TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
             ),
@@ -106,7 +106,7 @@ class UpperSection extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              _stateWiseList.first.deaths,
+              _stateWiseList.length > 0 ? _stateWiseList.first.deaths : '0',
               style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
             ),
           ],

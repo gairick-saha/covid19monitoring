@@ -76,7 +76,11 @@ class _DataListState extends State<DataList> {
                   );
                 },
               )
-            : CircularProgressIndicator(),
+            : Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 2.0,
+                ),
+              ),
       ),
     );
   }
