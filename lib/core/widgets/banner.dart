@@ -42,7 +42,7 @@ class UpperSection extends StatelessWidget {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[
             Text(
-              "ACTIVE",
+              "ACTIVE Cases",
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
             ),
             SizedBox(
