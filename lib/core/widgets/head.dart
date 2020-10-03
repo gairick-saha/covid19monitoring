@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
 class HeadSection extends StatelessWidget {
-  final updatedTime;
+  HeadSection({Key key}) : super(key: key);
 
-  HeadSection({Key key, this.updatedTime}) : super(key: key);
+  final int timer = DateTime.now().millisecondsSinceEpoch + 1000 * 60 * 60;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +21,19 @@ class HeadSection extends StatelessWidget {
             style:
                 TextStyle(fontSize: width * 0.05, fontWeight: FontWeight.bold),
           ),
-          Text(
-            "LAST UPDATED \n${this.updatedTime} MINUTES AGO",
-            textAlign: TextAlign.end,
-            style: TextStyle(
-              fontSize: width * 0.035,
-              fontWeight: FontWeight.bold,
-              color: Colors.green,
-            ),
+          CountdownTimer(
+            endTime: timer,
+            widgetBuilder: (_, CurrentRemainingTime time) {
+              return Text(
+                'LAST UPDATED \n${time.min} MINUTES ${time.sec} SECONDS AGO',
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: width * 0.035,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
+              );
+            },
           ),
         ],
       ),
