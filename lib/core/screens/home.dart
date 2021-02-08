@@ -3,7 +3,6 @@ import 'package:covid19tracker/core/services/api_services.dart';
 import 'package:covid19tracker/core/widgets/banner.dart';
 import 'package:covid19tracker/core/widgets/categoryTypes.dart';
 import 'package:covid19tracker/core/widgets/dataList.dart';
-import 'package:covid19tracker/core/widgets/head.dart';
 import 'package:covid19tracker/core/widgets/themeButton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,15 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final updateTime = '0';
-
   HitApi fetchData = HitApi();
-
-  // print(data.runtimeType);
-  // print(data['cases_time_series'].runtimeType);
-  // print(data['statewise'].runtimeType);
-  // print(data['tested'].runtimeType);
-  // print(_dataListClass.runtimeType);
 
   _getData() {
     final _getData = Provider.of<DataProvider>(context);
@@ -45,9 +36,6 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           SizedBox(
             height: height * 0.05,
-          ),
-          HeadSection(
-            updatedTime: updateTime,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
