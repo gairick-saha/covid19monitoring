@@ -1,40 +1,21 @@
-import 'package:covid19tracker/core/providers/dataProvider.dart';
-import 'package:covid19tracker/core/providers/themeProvider.dart';
-import 'package:covid19tracker/core/screens/home.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'app/routes/app_pages.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => ThemeBloc(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => DataProvider(),
-        ),
-      ],
-      child: Covid19App(),
-    );
-  }
-}
-
-class Covid19App extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final _theme = Provider.of<ThemeBloc>(context);
-
-    return MaterialApp(
-      title: 'Covid-19 Tracker',
-      debugShowCheckedModeBanner: false,
-      theme: _theme.currentTheme,
-      home: HomePage(),
+    return GetMaterialApp(
+      title: "Covid 19 Monitor",
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
     );
   }
 }
